@@ -1,6 +1,9 @@
 package com.dazai.neversitupcodetest.data.remote.dto
 
 
+import com.dazai.neversitupcodetest.data.local.entities.CurrencyEntity
+import com.dazai.neversitupcodetest.data.local.entities.HistoryEntity
+import com.dazai.neversitupcodetest.domain.utils.toDbEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -14,4 +17,13 @@ data class CurrentPriceDto(
     val disclaimer: String,
     @Json(name = "time")
     val time: Time
-)
+){
+    fun toDbEntity() : HistoryEntity{
+        return HistoryEntity(
+            id = System.currentTimeMillis(),
+            updatedISO = time.updatedISO, usd = bpi.uSD.toDbEntity(),
+            gbp = bpi.gBP.toDbEntity(),
+            eur = bpi.eUR.toDbEntity()
+        )
+    }
+}
