@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -19,7 +20,11 @@ object RemoteModule {
     @Provides
     @Singleton
     fun provideOkHttpClient() : OkHttpClient{
-        return OkHttpClient.Builder().build()
+        return OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().also {
+                it.level = HttpLoggingInterceptor.Level.BODY
+            })
+            .build()
     }
 
     @Provides

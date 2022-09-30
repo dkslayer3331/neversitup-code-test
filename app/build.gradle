@@ -45,6 +45,7 @@ dependencies {
     def retrofitVersion = "2.9.0"
     def moshiVersion = "1.14.0"
     def hiltVersion = "2.44"
+    def okHttpLoggerVersion = "4.10.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -64,7 +65,11 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
 
+    //logger
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpLoggerVersion"
+
     //moshi
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     //hilt
