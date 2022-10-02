@@ -15,4 +15,8 @@ class LocalDataSourceImpl @Inject constructor(
     override suspend fun addHistory(historyEntity: HistoryEntity) {
         db.historyDao().addHistory(historyEntity)
     }
+
+    override suspend fun getLastRecord(): HistoryEntity {
+        return db.historyDao().getLastRecord()
+    }
 }

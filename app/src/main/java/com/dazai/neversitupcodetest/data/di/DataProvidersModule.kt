@@ -1,6 +1,7 @@
 package com.dazai.neversitupcodetest.data.di
 
 import com.dazai.neversitupcodetest.data.local.source.LocalDataSource
+import com.dazai.neversitupcodetest.data.local.source.LocalDataSourceImpl
 import com.dazai.neversitupcodetest.data.remote.source.RemoteSource
 import com.dazai.neversitupcodetest.data.remote.source.RemoteSourceImpl
 import dagger.Binds
@@ -16,6 +17,6 @@ abstract class DataProvidersModule {
     abstract fun bindRemoteSource(impl : RemoteSourceImpl) : RemoteSource
 
     @Binds
-    abstract fun bindLocalSource(impl : LocalDataSource) : LocalDataSource
+    abstract fun bindLocalSource(impl : LocalDataSourceImpl) : LocalDataSource
 
 }

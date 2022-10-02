@@ -1,10 +1,12 @@
 package com.dazai.neversitupcodetest.data.local.typeConverters
 
+import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.dazai.neversitupcodetest.data.local.entities.CurrencyEntity
 import com.squareup.moshi.Moshi
 import javax.inject.Inject
 
+@ProvidedTypeConverter
 class CurrencyEntityTypeConverter @Inject constructor(
     private val moshi: Moshi
 ) {

@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
                 }
             }.collect { data ->
                 _state.update {
-                    MainScreenState(
+                    it.copy(
                         data = data,
                         isLoading = false,
                         error = null

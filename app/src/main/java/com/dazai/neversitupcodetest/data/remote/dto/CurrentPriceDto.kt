@@ -21,9 +21,10 @@ data class CurrentPriceDto(
     fun toDbEntity() : HistoryEntity{
         return HistoryEntity(
             id = System.currentTimeMillis(),
-            updatedISO = time.updatedISO, usd = bpi.uSD.toDbEntity(),
+            updatedISO = time.updated, usd = bpi.uSD.toDbEntity(),
             gbp = bpi.gBP.toDbEntity(),
             eur = bpi.eUR.toDbEntity()
         )
     }
+
 }

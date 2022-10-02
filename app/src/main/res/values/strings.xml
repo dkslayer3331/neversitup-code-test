@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Neversitup code test</string>
+    <string name="btn_currency_converter">Currency Converter</string>
+    <string name="hint_enter_the_amount">Enter the amount</string>
 </resources>

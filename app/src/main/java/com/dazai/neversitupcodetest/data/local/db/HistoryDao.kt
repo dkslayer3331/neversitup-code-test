@@ -16,6 +16,9 @@ interface HistoryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addHistory(historyEntity: HistoryEntity)
 
+    @Query("SELECT * FROM histories ORDER BY id DESC LIMIT 1")
+    suspend fun getLastRecord() : HistoryEntity
+
     @Query("delete from histories")
     suspend fun clearAll()
 
