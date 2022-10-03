@@ -14,9 +14,9 @@ import dagger.hilt.components.SingletonComponent
 abstract class DataProvidersModule {
 
     @Binds
-    abstract fun bindRemoteSource(impl : RemoteSourceImpl) : RemoteSource
+    abstract fun bindRemoteSource(impl: RemoteSourceImpl): RemoteSource
 
     @Binds
-    abstract fun bindLocalSource(impl : LocalDataSourceImpl) : LocalDataSource
+    abstract fun bindLocalSource(impl: LocalDataSourceImpl): LocalDataSource
 
 }

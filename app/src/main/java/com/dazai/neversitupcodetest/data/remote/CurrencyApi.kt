@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface CurrencyApi {
     @GET("/v1/bpi/currentprice.json")
-    suspend fun getCurrentPrice() : CurrentPriceDto
+    suspend fun getCurrentPrice(): CurrentPriceDto
 }

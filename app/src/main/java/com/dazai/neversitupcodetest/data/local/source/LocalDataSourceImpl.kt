@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor(
-    private val db : CurrencyAppDb
-) : LocalDataSource{
+    private val db: CurrencyAppDb
+) : LocalDataSource {
     override fun getHistories(): Flow<List<HistoryEntity>> {
         return db.historyDao().getAllHistories()
     }

@@ -16,7 +16,7 @@ import dagger.hilt.components.SingletonComponent
 object DatabaseModule {
 
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context, moshi: Moshi) : CurrencyAppDb{
+    fun provideDatabase(@ApplicationContext context: Context, moshi: Moshi): CurrencyAppDb {
         return Room.databaseBuilder(context, CurrencyAppDb::class.java, "history-db")
             .fallbackToDestructiveMigration()
             .addTypeConverter(CurrencyEntityTypeConverter(moshi))
@@ -24,7 +24,7 @@ object DatabaseModule {
     }
 
     @Provides
-    fun provideTypeConverter(moshi: Moshi) : CurrencyEntityTypeConverter{
+    fun provideTypeConverter(moshi: Moshi): CurrencyEntityTypeConverter {
         return CurrencyEntityTypeConverter(moshi)
     }
 

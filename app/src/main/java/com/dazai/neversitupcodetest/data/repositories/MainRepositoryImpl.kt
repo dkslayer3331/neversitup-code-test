@@ -16,12 +16,12 @@ class MainRepositoryImpl @Inject constructor(
 ) : MainRepository {
 
     override suspend fun getHistories(): Flow<List<History>> {
-        try{
+        try {
             remoteSource.getCurrentPrice().also {
                 localDataSource.addHistory(it.toDbEntity())
             }
-        }catch (e : Exception){
-            if(localDataSource.getHistories().toList().isEmpty()) throw e
+        } catch (e: Exception) {
+            if (localDataSource.getHistories().toList().isEmpty()) throw e
             return localDataSource.getHistories().map { it.map { it.toDomain() } }
         }
         return localDataSource.getHistories().map { it.map { it.toDomain() } }

@@ -15,7 +15,7 @@ import com.dazai.neversitupcodetest.domain.models.History
 class HistoryAdapter : ListAdapter<History, HistoryAdapter.HistoryViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        Log.d("createVH","get called")
+        Log.d("createVH", "get called")
         return HistoryViewHolder(
             ItemHistoryBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -26,24 +26,28 @@ class HistoryAdapter : ListAdapter<History, HistoryAdapter.HistoryViewHolder>(di
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        with(holder){
-            with(binding){
-                with(getItem(position)){
+        with(holder) {
+            with(binding) {
+                with(getItem(position)) {
                     tvDate.text = updatedISO
                     tvEURLabel.text = eur.code
-                    tvEURRate.text = HtmlCompat.fromHtml(eur.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    tvEURRate.text =
+                        HtmlCompat.fromHtml(eur.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
                     tvUSDLabel.text = usd.code
-                    tvUSDrate.text = HtmlCompat.fromHtml(usd.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    tvUSDrate.text =
+                        HtmlCompat.fromHtml(usd.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
                     tvGBPlabel.text = gbp.code
-                    tvGBPRate.text = HtmlCompat.fromHtml(gbp.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    tvGBPRate.text =
+                        HtmlCompat.fromHtml(gbp.rate, HtmlCompat.FROM_HTML_MODE_COMPACT)
                 }
             }
         }
     }
 
-    class HistoryViewHolder(val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
+    class HistoryViewHolder(val binding: ItemHistoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         init {
-            Log.d("viewHolder","init")
+            Log.d("viewHolder", "init")
         }
     }
 

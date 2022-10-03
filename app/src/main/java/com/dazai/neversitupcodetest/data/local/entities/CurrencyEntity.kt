@@ -8,7 +8,7 @@ import com.squareup.moshi.JsonClass
 @Entity
 data class CurrencyEntity(
     @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
+    val id: Int = 0,
     val code: String,
     val rate: String,
     val rateFloat: Double,

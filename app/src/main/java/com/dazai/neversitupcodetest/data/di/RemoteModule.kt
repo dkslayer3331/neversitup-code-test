@@ -19,7 +19,7 @@ object RemoteModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() : OkHttpClient{
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().also {
                 it.level = HttpLoggingInterceptor.Level.BODY
@@ -29,15 +29,19 @@ object RemoteModule {
 
     @Provides
     @Singleton
-    fun provideMoshiBuilder() : Moshi = Moshi.Builder().build()
+    fun provideMoshiBuilder(): Moshi = Moshi.Builder().build()
 
     @Provides
     @Singleton
-    fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory = MoshiConverterFactory.create(moshi)
+    fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory =
+        MoshiConverterFactory.create(moshi)
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, moshiConverterFactory: MoshiConverterFactory) : CurrencyApi{
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        moshiConverterFactory: MoshiConverterFactory
+    ): CurrencyApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(moshiConverterFactory)

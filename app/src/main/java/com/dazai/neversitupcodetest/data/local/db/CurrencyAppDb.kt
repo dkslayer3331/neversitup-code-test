@@ -8,8 +8,12 @@ import com.dazai.neversitupcodetest.data.local.entities.HistoryEntity
 import com.dazai.neversitupcodetest.data.local.typeConverters.CurrencyEntityTypeConverter
 
 
-@Database(exportSchema = false, version = 1, entities = [CurrencyEntity::class, HistoryEntity::class])
+@Database(
+    exportSchema = false,
+    version = 1,
+    entities = [CurrencyEntity::class, HistoryEntity::class]
+)
 @TypeConverters(CurrencyEntityTypeConverter::class)
 abstract class CurrencyAppDb : RoomDatabase() {
-    abstract fun historyDao() : HistoryDao
+    abstract fun historyDao(): HistoryDao
 }

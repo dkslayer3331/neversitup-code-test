@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.Flow
 interface HistoryDao {
 
     @Query("select * from histories")
-    fun getAllHistories() : Flow<List<HistoryEntity>>
+    fun getAllHistories(): Flow<List<HistoryEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addHistory(historyEntity: HistoryEntity)
 
     @Query("SELECT * FROM histories ORDER BY id DESC LIMIT 1")
-    suspend fun getLastRecord() : HistoryEntity
+    suspend fun getLastRecord(): HistoryEntity
 
     @Query("delete from histories")
     suspend fun clearAll()

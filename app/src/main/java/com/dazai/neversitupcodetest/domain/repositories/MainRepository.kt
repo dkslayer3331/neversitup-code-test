@@ -6,7 +6,7 @@ import com.dazai.neversitupcodetest.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface MainRepository {
-    suspend fun getHistories() : Flow<List<History>>
+    suspend fun getHistories(): Flow<List<History>>
     suspend fun addHistory(history: HistoryEntity)
-    suspend fun getLastRecord() : History
+    suspend fun getLastRecord(): History
 }

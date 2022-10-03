@@ -17,8 +17,8 @@ data class CurrentPriceDto(
     val disclaimer: String,
     @Json(name = "time")
     val time: Time
-){
-    fun toDbEntity() : HistoryEntity{
+) {
+    fun toDbEntity(): HistoryEntity {
         return HistoryEntity(
             id = System.currentTimeMillis(),
             updatedISO = time.updated, usd = bpi.uSD.toDbEntity(),

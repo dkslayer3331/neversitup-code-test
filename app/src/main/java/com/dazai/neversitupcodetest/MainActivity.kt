@@ -15,9 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
-    private val  viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel>()
 
     private val adapter: HistoryAdapter by lazy {
         HistoryAdapter()
@@ -37,18 +37,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launchWhenStarted {
-            viewModel.state.collect{
+            viewModel.state.collect {
                 binding.progressIndicator.isVisible = it.isLoading
                 binding.tvError.isVisible = it.error != null
                 it.error?.let {
                     binding.tvError.text = it
                 }
-                if(it.data.isNotEmpty()){
-                    Log.d("listSize","${it.data.size}")
+                if (it.data.isNotEmpty()) {
+                    Log.d("listSize", "${it.data.size}")
                     binding.rvHistories.visibility = View.VISIBLE
                     adapter.submitList(it.data)
-                }
-                else{
+                } else {
                     binding.rvHistories.visibility = View.GONE
                 }
             }
