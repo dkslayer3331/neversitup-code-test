@@ -4,15 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.annotation.CheckResult
-import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.dazai.neversitupcodetest.databinding.ActivityConverterBinding
-import com.dazai.neversitupcodetest.domain.models.Currency
 import com.dazai.neversitupcodetest.presentation.SealedCurrency
 import com.dazai.neversitupcodetest.presentation.viewmodels.ConverterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +31,17 @@ class ConverterActivity : AppCompatActivity() {
 
     var selectedAdapterItem = ""
 
+    private fun getLatestPrice() {
+        val handler = Handler(Looper.getMainLooper())
+        val runnable: Runnable = object : Runnable {
+            override fun run() {
+                viewModel.getHistories()
+                handler.postDelayed(this, 60000)
+            }
+        }
+        handler.postDelayed(runnable, 60000)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConverterBinding.inflate(layoutInflater)
@@ -40,6 +51,8 @@ class ConverterActivity : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayListOf<String>())
 
         binding.tvCurrency.setAdapter(arrayAdapter)
+
+        getLatestPrice()
 
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {

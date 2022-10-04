@@ -14,4 +14,40 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun testFibonancci(){
+        generateFibonacci()
+    }
+
+    @Test
+    fun testPrimeNumbers(){
+        generatePrimeNumbers()
+    }
+
+    private fun generateFibonacci(){
+        val n = 8
+        var t1 = 0
+        var t2 = 1
+        var allItems = mutableListOf(t1)
+
+        for (i in 1..n) {
+            val sum = t1 + t2
+            t1 = t2
+            t2 = sum
+            allItems.add(t1)
+           // allItems.add(t2)
+        }
+        print("all numbers ${allItems.joinToString(",")}")
+    }
+
+    fun generatePrimeNumbers(){
+        val li = mutableListOf<Int>()
+        for (num in 2..19) {
+            if ((2 until num).none{ num % it == 0 })
+                li.add(num)
+        }
+        print("prime numbers ${li.joinToString(",")}")
+    }
+
 }

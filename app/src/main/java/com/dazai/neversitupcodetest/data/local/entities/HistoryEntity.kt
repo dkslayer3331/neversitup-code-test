@@ -9,9 +9,9 @@ import com.dazai.neversitupcodetest.domain.utils.toUiModel
 
 @Entity(tableName = TableNames.history)
 data class HistoryEntity(
+    val updatedISO: String,
     @PrimaryKey
     val id: Long,
-    val updatedISO: String,
     val usd: CurrencyEntity,
     val gbp: CurrencyEntity,
     val eur: CurrencyEntity

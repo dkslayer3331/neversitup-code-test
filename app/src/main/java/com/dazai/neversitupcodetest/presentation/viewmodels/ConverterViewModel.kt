@@ -4,21 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dazai.neversitupcodetest.domain.repositories.MainRepository
 import com.dazai.neversitupcodetest.domain.usecases.CalculatorUseCase
+import com.dazai.neversitupcodetest.domain.usecases.GetHistories
 import com.dazai.neversitupcodetest.presentation.SealedCurrency
 import com.dazai.neversitupcodetest.presentation.screens.CurrencyConverterScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.floor
 
 @HiltViewModel
 class ConverterViewModel @Inject constructor(
     private val repository: MainRepository,
-    private val calculatorUseCase: CalculatorUseCase
+    private val calculatorUseCase: CalculatorUseCase,
+    private val getHistories: GetHistories
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CurrencyConverterScreen())
@@ -28,6 +28,12 @@ class ConverterViewModel @Inject constructor(
 
     init {
         loadLatestCurrency()
+    }
+
+    fun getHistories(){
+        viewModelScope.launch {
+            getHistories()
+        }
     }
 
     fun convert(input: String, currency: SealedCurrency?) {
