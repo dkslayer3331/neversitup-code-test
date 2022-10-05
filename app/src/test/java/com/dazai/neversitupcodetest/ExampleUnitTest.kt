@@ -56,10 +56,11 @@ class ExampleUnitTest {
     }
 
     fun filterArray(){
-        val firstArray = arrayOf(1,2,3,4,5)
-        val secondArray = arrayOf(1,2,3,4,5,6,7,8)
-        val result = secondArray.toList().minus(firstArray.toList().toSet())
-        print("array elements $result")
+        val firstArray = mutableListOf(1,2,3,4,5)
+        var secondArray = mutableListOf(1,2,3,4,5,6,7,8)
+        secondArray.clear()
+        secondArray.addAll(firstArray)
+        print("array elements ${secondArray.joinToString(",")}")
     }
 
 }
