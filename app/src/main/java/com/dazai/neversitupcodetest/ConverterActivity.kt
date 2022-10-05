@@ -31,17 +31,6 @@ class ConverterActivity : AppCompatActivity() {
 
     var selectedAdapterItem = ""
 
-    private fun getLatestPrice() {
-        val handler = Handler(Looper.getMainLooper())
-        val runnable: Runnable = object : Runnable {
-            override fun run() {
-                viewModel.getHistories()
-                handler.postDelayed(this, 60000)
-            }
-        }
-        handler.postDelayed(runnable, 60000)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConverterBinding.inflate(layoutInflater)
@@ -51,8 +40,6 @@ class ConverterActivity : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayListOf<String>())
 
         binding.tvCurrency.setAdapter(arrayAdapter)
-
-        getLatestPrice()
 
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {
