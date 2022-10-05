@@ -25,6 +25,11 @@ class ExampleUnitTest {
         generatePrimeNumbers()
     }
 
+    @Test
+    fun testArrayDiff(){
+        filterArray()
+    }
+
     private fun generateFibonacci(){
         val n = 8
         var t1 = 0
@@ -48,6 +53,13 @@ class ExampleUnitTest {
                 li.add(num)
         }
         print("prime numbers ${li.joinToString(",")}")
+    }
+
+    fun filterArray(){
+        val firstArray = arrayOf(1,2,3,4,5)
+        val secondArray = arrayOf(1,2,3,4,5,6,7,8)
+        val result = secondArray.toList().minus(firstArray.toList().toSet())
+        print("array elements $result")
     }
 
 }
