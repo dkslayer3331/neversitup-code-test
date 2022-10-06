@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:elevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="8dp"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="150dp"
+    android:layout_margin="@dimen/margin_padding_size_small"
+    android:elevation="@dimen/margin_padding_size_small"
+    app:cardCornerRadius="@dimen/margin_padding_size_small">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="@dimen/margin_padding_size_small">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/firstGuideLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.33"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/secondGuideLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.66"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvUSDLabel"
+            style="@style/cardHistoryHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="USD"
             android:textColor="@color/purple_200"
-            style="@style/cardHistoryHeader"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/firstGuideLine"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:id="@+id/tvUSDrate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvUSDLabel"
             app:layout_constraintStart_toStartOf="@+id/tvUSDLabel"
@@ -57,60 +57,60 @@
             style="@style/cardHistoryHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textColor="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/secondGuideLine"
             app:layout_constraintStart_toStartOf="@+id/firstGuideLine"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.4"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvGBPRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvGBPlabel"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/tvGBPlabel"
-            app:layout_constraintTop_toBottomOf="@+id/tvGBPlabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvGBPlabel"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvEURLabel"
             style="@style/cardHistoryHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textColor="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/secondGuideLine"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.4"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvEURRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvEURLabel"
             app:layout_constraintStart_toStartOf="@+id/tvEURLabel"
-            app:layout_constraintTop_toBottomOf="@+id/tvEURLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tvEURLabel"
+            tools:text="TextView" />
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>
