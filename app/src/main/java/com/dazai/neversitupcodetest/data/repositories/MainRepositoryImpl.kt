@@ -16,15 +16,14 @@ class MainRepositoryImpl @Inject constructor(
 ) : MainRepository {
 
     override suspend fun getHistories(): Flow<List<History>> {
-        try {
-            remoteSource.getCurrentPrice().also {
-                localDataSource.addHistory(it.toDbEntity())
-            }
+        return try {
+            val remoteData = remoteSource.getCurrentPrice()
+            localDataSource.addHistory(remoteData.toDbEntity())
+            localDataSource.getHistories().map { it.map { it.toDomain() } }
         } catch (e: Exception) {
             if (localDataSource.getHistories().toList().isEmpty()) throw e
-            return localDataSource.getHistories().map { it.map { it.toDomain() } }
+            localDataSource.getHistories().map { it.map { it.toDomain() } }
         }
-        return localDataSource.getHistories().map { it.map { it.toDomain() } }
     }
 
     override suspend fun addHistory(history: HistoryEntity) {

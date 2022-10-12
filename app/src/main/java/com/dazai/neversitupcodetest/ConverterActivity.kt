@@ -2,14 +2,12 @@ package com.dazai.neversitupcodetest
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.annotation.CheckResult
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.dazai.neversitupcodetest.databinding.ActivityConverterBinding
@@ -86,7 +84,7 @@ class ConverterActivity : AppCompatActivity() {
 @CheckResult
 fun EditText.textChanges(): Flow<CharSequence?> {
     return callbackFlow {
-        val listener = doOnTextChanged { text, _, _, _ -> trySend(text) }
+        val listener = doOnTextChanged{ text, _, _, _ -> trySend(text) }
         awaitClose { removeTextChangedListener(listener) }
     }.onStart { emit(text) }
 }
